@@ -37,4 +37,5 @@ public class GodController {
     public void deleteUser(@PathVariable Long id) {
         godMapper.deleteUser(id);
     }
+
 }
