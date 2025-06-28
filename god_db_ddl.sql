@@ -5,4 +5,4 @@ create table god_table
     god_column varchar(255) null comment '示例列',
     name       varchar(255) null comment '名字'
 );
-123
+123123
