@@ -10,7 +10,6 @@ import java.util.List;
 public class QuestionController {
     //restful风格的接口
     
-    @Autowired
 
     @PostMapping("/follow")
     public String followQuestion(@RequestParam("question_id") String questionId) {
