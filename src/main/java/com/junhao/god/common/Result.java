@@ -33,4 +33,10 @@ public class Result {
         result.setMsg(msg);
         return result;
     }
+    public static Result warn(String msg) {
+        Result result = new Result();
+        result.setCode("200");
+        result.setMsg(msg);
+        return result;
+    }
 }
