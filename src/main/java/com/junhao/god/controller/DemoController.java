@@ -1,9 +1,7 @@
 package com.junhao.god.controller;
 
 import com.junhao.god.entity.GodTable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +15,13 @@ public class DemoController {
         method();
         return "HelloWorld!";
     }
+    @PostMapping
+    public String getAllUsers1(@RequestBody String test) {
+        System.out.println("拿到了参数"+test);
+        method();
+        return "HelloWorld!";
+    }
+
 
     private void method() {
         System.out.println("方法执行了...");
