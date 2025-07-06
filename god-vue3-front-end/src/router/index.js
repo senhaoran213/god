@@ -33,6 +33,16 @@ const router = createRouter({
       name: 'notfound',
       component: () => import('@/views/NotFound.vue'),
     },
+    {
+      path: '/service',
+      name: 'service',
+      component: () => import('@/views/ServicePage.vue'),
+    },
+    {
+      path: '/worldcloud',
+      name: 'worldcloud',
+      component: () => import('@/views/WorldCloud.vue'),
+    },
   ],
 })
 

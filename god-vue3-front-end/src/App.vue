@@ -30,16 +30,18 @@ const isAuthPage = computed(() => route.path === '/login' || route.path === '/re
     <template v-else>
       <div class="admin-layout dark-theme">
         <aside class="sidebar">
-          <div class="logo">⚡ 酷炫后台</div>
+          <div class="logo">⚡后台管理</div>
           <nav>
             <router-link to="/dashboard"><span class="icon">🏠</span>仪表盘</router-link>
             <router-link to="/user"><span class="icon">👤</span>用户管理</router-link>
             <router-link to="/permission"><span class="icon">🔒</span>权限管理</router-link>
+            <router-link to="/service"><span class="icon">🔺</span>业务页面</router-link>
+            <router-link to="/worldcloud"><span class="icon">🔍</span>热词云图</router-link>
           </nav>
         </aside>
         <div class="main">
           <header class="header">
-            <span class="header-title">欢迎来到酷炫管理后台</span>
+            <span class="header-title">欢迎来到管理后台</span>
             <button class="logout-btn" @click="handleLogout">退出登录</button>
           </header>
           <main class="content">
