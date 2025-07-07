@@ -21,5 +21,14 @@ public interface TeamMapper {
         ) AS related_subjects
         ON t.subject_code = related_subjects.subject_code
        """)
-    List<Team> getTeam(@Param("userId") Long userId);
+    List<Team> getRelatedTeam(@Param("userId") Long userId);
+    @Select("""
+        select kaoyan_code from user where id = #{userId}
+    """)
+    String getkaoyanCode(@Param("userId") Long userId);
+
+    List<Long> getSubjects(@Param("kaoyanCode") String kaoyanCode);
+
+    List<Team> getTeamsBySubjects(@Param("list") List<Long> subjectsCode);
+
 }
