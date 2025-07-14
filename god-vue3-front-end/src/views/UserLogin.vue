@@ -16,35 +16,35 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import request from '@/utils/request'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 const username = ref('admin')
 const password = ref('')
 const error = ref('')
-const emit = defineEmits(['login-success'])
 const router = useRouter()
 
-function handleLogin() {
+async function handleLogin() {
   if (!username.value || !password.value) {
     error.value = '用户名和密码不能为空'
     return
   }
 
-  const validUsers = [
-    { user: 'admin', pass: '123456' },
-    { user: 'test', pass: 'test123' }
-  ]
 
-  const isValid = validUsers.some(u => u.user === username.value && u.pass === password.value)
-
-  if (isValid) {
-    error.value = ''
-    localStorage.setItem('isLogin', 'true')
-    emit('login-success')
+  const res = await request.post('/auth/login', {
+    username: username.value,
+    password: password.value
+  })
+  if (res.code === 200) {
+    userStore.loginSuccess(res.data)  // 保存 token
     router.push('/dashboard')
   } else {
-    error.value = '用户名或密码错误'
+    alert('登录失败')
   }
+
 }
 function goRegister() {
   router.push('/register')

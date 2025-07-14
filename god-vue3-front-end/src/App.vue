@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { useRoute, useRouter, RouterView } from 'vue-router'
 
+
 // 模拟登录状态
 const isLogin = ref(localStorage.getItem('isLogin') === 'true')
 const router = useRouter()
@@ -37,6 +38,7 @@ const isAuthPage = computed(() => route.path === '/login' || route.path === '/re
             <router-link to="/permission"><span class="icon">🔒</span>权限管理</router-link>
             <router-link to="/service"><span class="icon">🔺</span>业务页面</router-link>
             <router-link to="/worldcloud"><span class="icon">🔍</span>热词云图</router-link>
+            <router-link to="/ajax-test"><span class="icon">🔍</span>Ajax测试</router-link>
           </nav>
         </aside>
         <div class="main">

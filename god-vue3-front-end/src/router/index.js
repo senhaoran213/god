@@ -29,6 +29,11 @@ const router = createRouter({
       component: () => import('@/views/Register.vue'),
     },
     {
+      path: '/ajax-test',
+      name: 'ajaxtest',
+      component: () => import('@/views/AjaxTest.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'notfound',
       component: () => import('@/views/NotFound.vue'),
