@@ -1,4 +1,5 @@
 package com.junhao.god.service;
+import com.junhao.god.common.exception.BusinessException;
 import com.junhao.god.entity.Team;
 import com.junhao.god.mapper.TeamMapper;
 import com.junhao.god.service.implement.TeamService;
@@ -22,7 +23,7 @@ public class TeamServiceImpl implements TeamService {
      * @return
      */
     @Override
-    public List<Team> findRelatedTeams(Long userId) throws Exception {
+    public List<Team> findRelatedTeams(Long userId) {
         //subject_mapping、team、user
         //查询当前用户关联科目相关队伍
 //        + 先查用户的 `kaoyan_code`；
@@ -33,7 +34,7 @@ public class TeamServiceImpl implements TeamService {
 //        + 查询匹配 `subject_code` 的所有队伍；
         //从数据里拿数据
         if (subjectCodes == null || subjectCodes.isEmpty()) {
-            throw new Exception("没有对应的队伍");
+            throw new BusinessException("没有对应的队伍");
         }
 
         List<Team> team = teamMapper.getTeamsBySubjects(subjectCodes);

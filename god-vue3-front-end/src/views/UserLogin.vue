@@ -20,6 +20,8 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import request from '@/utils/request'
 import { useUserStore } from '@/stores/user'
+import { ElMessage } from 'element-plus'
+
 
 const userStore = useUserStore()
 const username = ref('admin')
@@ -32,17 +34,20 @@ async function handleLogin() {
     error.value = '用户名和密码不能为空'
     return
   }
+  const formData = new URLSearchParams()
+  formData.append('username', username.value)
+  formData.append('password', password.value)
 
-
-  const res = await request.post('/auth/login', {
-    username: username.value,
-    password: password.value
-  })
-  if (res.code === 200) {
+  const res = await request.post('/auth/login', formData)
+  if (res.code == 200) {
+    
+    
     userStore.loginSuccess(res.data)  // 保存 token
+    console.log(userStore);
+
     router.push('/dashboard')
   } else {
-    alert('登录失败')
+    ElMessage.error(res.msg)
   }
 
 }

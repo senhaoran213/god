@@ -15,12 +15,14 @@ import java.util.Map;
 public class QuestionFollowController {
     @Autowired
     private QuestionFollowService followService;
-     @PostMapping
+
+    @PostMapping
     public Result follow(@RequestBody Map<String, Long> data) {
-         Long userId = data.get("userId");
-         Long questionId = data.get("questionId");
-         boolean success = followService.followQuestion(userId, questionId);
-         return success ? Result.success("关注成功") : Result.error("你已关注该问题");
-     }
+        Long userId = data.get("userId");
+        Long questionId = data.get("questionId");
+        followService.followQuestion(userId, questionId);
+
+        return Result.success("关注成功") ;
+    }
 
 }

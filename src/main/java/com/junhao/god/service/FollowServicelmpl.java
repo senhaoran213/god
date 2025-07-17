@@ -1,4 +1,5 @@
 package com.junhao.god.service;
+import com.junhao.god.common.exception.BusinessException;
 import com.junhao.god.mapper.QuestionFollowMapper;
 import com.junhao.god.service.implement.QuestionFollowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class FollowServicelmpl implements QuestionFollowService {
     @Override
     public Boolean followQuestion(Long userId, Long questionId) {
             if(questionFollowMapper.hasFollow(userId,questionId)>0) {
-                return false;
+                throw new BusinessException("你已关注该问题");
             }
             return questionFollowMapper.insertUser(userId,questionId)>0;
        }
