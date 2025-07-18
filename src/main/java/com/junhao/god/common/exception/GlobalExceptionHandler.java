@@ -18,4 +18,15 @@ public class GlobalExceptionHandler {
         return Result.error(ex.getCode().toString(),ex.getMessage());
     }
 
+    @ExceptionHandler(ValidationException.class)
+    public Result handleValidationException(ValidationException ex) {
+        return Result.error(ex.getCode().toString(), ex.getMessage());
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public Result handleNotFoundException(NotFoundException ex) {
+        return Result.error(ex.getCode().toString(), ex.getMessage());
+    }
+
+
 }
